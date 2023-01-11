@@ -1,18 +1,28 @@
 # Project name.
 proj := 'lerea'
+# Intermediate directory containing relinked files.
+intermediate := 'docs'
 # Directory containing production files.
 dist := 'site'
 # Branch to push production files to.
 dist-branch := 'gh-pages'
 
 # Serve the web site.
-serve:
+serve: _relink
     pdm run mkdocs serve
 
 # Compile the web site.
-build:
+build: _relink
     pdm run mkdocs build
 
+# Relink files.
+_relink: clean
+    rsync -av --exclude='.*' {{quote(proj)}}/* {{quote(intermediate)}}
+    python3 ./fix-indices.py
+
+# Update the sources.
+update:
+    git submodule update --recursive {{quote(proj)}}
 
 # Deploy the project.
 deploy: build && clean
@@ -28,4 +38,4 @@ deploy: build && clean
 
 # Clean up.
 clean:
-    rm -rf {{quote(dist)}}
+    rm -rf {{quote(intermediate)}} {{quote(dist)}}
