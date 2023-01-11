@@ -1,0 +1,5 @@
+[submodule "lerea"]
+	path = lerea
+	url = git@github.com:ethwu/lerea
+    branch = new-canon
+	shallow = true

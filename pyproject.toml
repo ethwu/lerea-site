@@ -1,0 +1,17 @@
+[tool.pdm]
+[tool.pdm.dev-dependencies]
+dev = [
+    "mkdocs>=1.4.2",
+    "mkdocs-cluster>=0.0.9",
+]
+
+[project]
+name = ""
+version = ""
+description = ""
+authors = [
+    {name = "Ethan Wu", email = "ethanwu@cs.ucsb.edu"},
+]
+dependencies = []
+requires-python = ">=3.10"
+license = {text = "CC-BY-SA-4.0"}
