@@ -17,6 +17,7 @@ build: relink
 
 # Convert wikilinks to CommonMark links.
 relink:
+    mkdir -p {{quote(intermediate)}}
     obsidian-export {{quote(proj)}} {{quote(intermediate)}}
 
 # Deploy the project.
