@@ -1,24 +1,18 @@
 # Project name.
 proj := 'lerea'
-# Intermediate file directory.
-intermediate := 'docs/'
 # Directory containing production files.
 dist := 'site'
 # Branch to push production files to.
 dist-branch := 'gh-pages'
 
 # Serve the web site.
-serve: relink
+serve:
     pdm run mkdocs serve
 
 # Compile the web site.
-build: relink
+build:
     pdm run mkdocs build
 
-# Convert wikilinks to CommonMark links.
-relink:
-    mkdir -p {{quote(intermediate)}}
-    obsidian-export {{quote(proj)}} {{quote(intermediate)}}
 
 # Deploy the project.
 deploy: build && clean
@@ -34,4 +28,4 @@ deploy: build && clean
 
 # Clean up.
 clean:
-    rm -rf {{quote(intermediate)}} {{quote(dist)}}
+    rm -rf {{quote(dist)}}

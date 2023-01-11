@@ -1,2 +1,5 @@
 site_name: Leréa
 theme: material
+plugins:
+  - search
+  - roamlinks
