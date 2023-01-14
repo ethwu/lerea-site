@@ -2,6 +2,8 @@
 proj := 'lerea'
 # Intermediate directory containing relinked files.
 intermediate := 'docs'
+# Directory to inject into the intermediate directory.
+inject := 'inject'
 # Directory containing production files.
 dist := 'site'
 # Branch to push production files to.
@@ -18,7 +20,8 @@ build: _relink
 # Relink files.
 _relink: clean
     rsync -av --exclude='.*' {{quote(proj)}}/* {{quote(intermediate)}}
-    python3 ./fix-indices.py
+    rsync -av {{quote(inject)}}/* {{quote(intermediate)}}
+    pdm run ./fix-indices.py
 
 # Update the sources.
 update:
