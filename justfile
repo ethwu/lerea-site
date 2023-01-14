@@ -9,6 +9,9 @@ dist := 'site'
 # Branch to push production files to.
 dist-branch := 'gh-pages'
 
+# Project domain name.
+domain := 'info.polarparty.page'
+
 # Serve the web site.
 serve: _relink
     pdm run mkdocs serve
@@ -16,6 +19,7 @@ serve: _relink
 # Compile the web site.
 build: _relink
     pdm run mkdocs build
+    echo {{quote(domain)}} > {{quote(dist) / 'CNAME'}}
 
 # Relink files.
 _relink: clean
