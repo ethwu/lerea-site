@@ -1,6 +1,6 @@
 site_name: Leréa
 theme:
-  name: windmill
+  name: material
   font:
     text: 'Source Sans 3'
     code: 'Source Code Pro'
