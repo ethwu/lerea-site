@@ -25,7 +25,7 @@ _relink: clean
 
 # Update the sources.
 update:
-    git submodule update --recursive {{quote(proj)}}
+    git submodule update --recursive --remote {{quote(proj)}}
 
 # Deploy the project.
 deploy: build && clean
