@@ -1,6 +1,6 @@
 site_name: Leréa
 theme:
-  name: material
+  name: windmill
   font:
     text: 'Source Sans 3'
     code: 'Source Code Pro'
@@ -27,7 +27,6 @@ theme:
     - search.highlight
 plugins:
   - search
-  - roamlinks
 markdown_extensions:
   - toc:
       permalink: true

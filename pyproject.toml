@@ -3,7 +3,6 @@
 dev = [
     "mkdocs>=1.4.2",
     "mkdocs-material>=9.0.3",
-    "mkdocs-roamlinks-plugin>=0.2.0",
 ]
 
 [project]

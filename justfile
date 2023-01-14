@@ -2,6 +2,8 @@
 proj := 'lerea'
 # Intermediate directory containing relinked files.
 intermediate := 'docs'
+# Second intermediate directory containing relinked files.
+intermediate2 := 'int'
 # Directory to inject into the intermediate directory.
 inject := 'inject'
 # Directory containing production files.
@@ -19,9 +21,12 @@ build: _relink
 
 # Relink files.
 _relink: clean
-    rsync -av --exclude='.*' {{quote(proj)}}/* {{quote(intermediate)}}
+    mkdir -p {{quote(intermediate)}} {{quote(intermediate2)}}
+    rsync -av --exclude='.*' {{quote(proj)}}/* {{quote(intermediate2)}}
+    pdm run ./fix-indices.py {{quote(intermediate2)}}
+    obsidian-export {{quote(intermediate2)}} {{quote(intermediate)}}
+    rm -rf {{quote(intermediate2)}}
     rsync -av {{quote(inject)}}/* {{quote(intermediate)}}
-    pdm run ./fix-indices.py
 
 # Update the sources.
 update:

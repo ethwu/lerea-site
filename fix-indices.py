@@ -1,12 +1,10 @@
 #! /usr/bin/env python3
 
 from pathlib import Path
+import sys
 
 # Rename any markdown file with the same name as its parent directory to
 # `index.md`.
-
-# Intermediate file directory.
-intermediate = Path('docs')
 
 def cmpfold(s: str) -> str:
     """
@@ -16,6 +14,10 @@ def cmpfold(s: str) -> str:
     return ''.join(filter(str.isidentifier, s)).casefold()
 
 if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        sys.exit(64)
+    # Intermediate file directory.
+    intermediate = Path(sys.argv[1])
     for file in intermediate.glob('**/*.md'):
         new_path = file.parent / 'index.md'
         if cmpfold(file.stem) == cmpfold(file.parent.name) and not new_path.exists():
