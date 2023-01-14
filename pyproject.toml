@@ -3,6 +3,8 @@
 dev = [
     "mkdocs>=1.4.2",
     "mkdocs-material>=9.0.3",
+    "mkdocs-minify-plugin>=0.6.2",
+    "mkdocs-literate-nav>=0.6.0",
 ]
 
 [project]
@@ -12,6 +14,8 @@ description = ""
 authors = [
     {name = "Ethan Wu", email = "ethanwu@cs.ucsb.edu"},
 ]
-dependencies = []
+dependencies = [
+    "mkdocs-ezlinks-plugin>=0.1.14",
+]
 requires-python = ">=3.10"
 license = {text = "CC-BY-SA-4.0"}

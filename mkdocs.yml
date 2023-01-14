@@ -27,6 +27,16 @@ theme:
     - search.highlight
 plugins:
   - search
+  - roamlinks
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+      htmlmin_opts:
+        remove_comments: true
+      cache_safe: true
+      js_files:
+        - javascripts/mathjax.js
 markdown_extensions:
   - toc:
       permalink: true
